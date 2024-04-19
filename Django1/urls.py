@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from djangoforms.views import MyView,success
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
