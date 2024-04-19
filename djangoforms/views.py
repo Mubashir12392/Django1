@@ -9,7 +9,7 @@ from .models import MyModel
 class MyView(FormView):
     template_name = 'myform.html'
     form_class = MyForm
-    success_url = 'success/'
+    success_url = 'mysuccess/'
 
     def form_valid(self, form):
 
@@ -25,5 +25,5 @@ class MyView(FormView):
         return super().form_valid(form)
     
 
-def success(request):
-    return render(request, 'success.html')
+def Mysuccess(request):
+    return render(request, 'mysuccess.html')
