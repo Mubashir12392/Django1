@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Student(models.Model):
+class MyModel(models.Model):
     CHOICES = (
         ('M','Male'),
         ('F','Female')
