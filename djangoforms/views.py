@@ -12,7 +12,7 @@ from .models import Student
 class StudentView(FormView):
     template_name = 'studentform.html'
     form_class = StudentForm
-    success_url = reverse_lazy ('students')
+    success_url = reverse_lazy('students')
 
     def form_valid(self, form):
 
