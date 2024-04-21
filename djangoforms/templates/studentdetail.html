@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/studentdata.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Detail</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.message }}</td>
+                    <td>
+                        <a href="{% url 'student_update' student.id %}"><button>Update</button></a>
+                        <a href=""><button>Delete</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
