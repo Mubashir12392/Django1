@@ -1,25 +1,32 @@
-from django.shortcuts import render
-from django.views.generic import FormView
-from .forms import CustomUserForm
 from django.contrib.auth.models import User
+from django.shortcuts import HttpResponseRedirect
+from django.contrib.auth import login
+from django.urls import reverse_lazy
+from django.views.generic import CreateView,FormView
+
+from .forms import CustomSignUpForm, CustomSignInForm
+
 
 # Create your views here.
-class SignUp(FormView):
+
+# ----- Custom User Signup View ------
+
+class CustomSignUpView(CreateView):
+    model = User
     template_name = 'signup.html'
-    form_class = CustomUserForm
-    success_url = 'success/'
+    form_class = CustomSignUpForm
+    success_url = reverse_lazy('signin')
 
+
+# --- Custom User Login  View -----
+
+class CustomSigninView(FormView):
+    form_class = CustomSignInForm
+    template_name = 'signin.html'
+    success_url = reverse_lazy('students')
+
+    # Make the user login
     def form_valid(self, form):
-
-        first_name = form.cleaned_data['first_name']
-        last_name = form.cleaned_data['last_name']
-        email = form.cleaned_data['email']
-        username = form.cleaned_data['username']
-        password = form.cleaned_data['password1']
-
-        User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
-
+        user = form.get_user()
+        login(self.request, user)
         return super().form_valid(form)
-    
-def success(request):
-    return render(request, 'success.html')
