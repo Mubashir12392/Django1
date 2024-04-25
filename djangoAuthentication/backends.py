@@ -6,7 +6,7 @@ class CustomAuthBackend(ModelBackend):
         User = get_user_model()
         try:
             user = User.objects.get(username=username)
-            if user.username.startswith('M') and user.check_password(password):
+            if user.username.startswith('m') and user.check_password(password):
                 return user
             else:
                 return None
