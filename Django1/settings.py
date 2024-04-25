@@ -55,11 +55,6 @@ MIDDLEWARE = [
     
 ]
 
-AUTHENTICATION_BACKENDS = [
-    'djangoAuthentication.backends.CustomAuthBackend',  # My custom authentication backend 
-    'django.contrib.auth.backends.ModelBackend',  
-]
-
 ROOT_URLCONF = 'Django1.urls'
 
 TEMPLATES = [
